@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/fragment1">
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.shehuan.myjetpack.navigation.Fragment1"
+        android:label="fragment1"
+        tools:layout="@layout/fragment1">
+        <action
+            android:id="@+id/action_fragment1_to_fragment2"
+            app:destination="@id/fragment2"
+            app:enterAnim="@anim/right_enter"
+            app:exitAnim="@anim/left_exit"
+            app:popEnterAnim="@anim/left_enter"
+            app:popExitAnim="@anim/right_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.shehuan.myjetpack.navigation.Fragment2"
+        android:label="fragment2"
+        tools:layout="@layout/fragment2">
+        <action
+            android:id="@+id/action_fragment2_to_fragment3"
+            app:destination="@id/sub_nav_graph"
+            app:enterAnim="@anim/right_enter"
+            app:exitAnim="@anim/left_exit"
+            app:popEnterAnim="@anim/left_enter"
+            app:popExitAnim="@anim/right_exit"/>
+    </fragment>
+    <navigation
+        android:id="@+id/sub_nav_graph"
+        app:startDestination="@id/fragment3">
+        <fragment
+            android:id="@+id/fragment3"
+            android:name="com.shehuan.myjetpack.navigation.Fragment3"
+            android:label="fragment3"
+            tools:layout="@layout/fragment3">
+        </fragment>
+    </navigation>
+</navigation>

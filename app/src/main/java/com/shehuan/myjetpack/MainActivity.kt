@@ -3,8 +3,11 @@ package com.shehuan.myjetpack
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.shehuan.myjetpack.lifecycles.LifecycleOwnerActivity
 import com.shehuan.myjetpack.livedata.LiveDataActivity
+import com.shehuan.myjetpack.livedata.LiveDataBus
 import com.shehuan.myjetpack.navigation.NavigationActivity
 import com.shehuan.myjetpack.paging.PagingActivity
 import com.shehuan.myjetpack.room.RoomActivity
@@ -15,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        LiveDataBus.observe("msg1", this, Observer<String> {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
     }
 
     fun lifecycle(view: View) {

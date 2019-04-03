@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.shehuan.myjetpack.R
 import kotlinx.android.synthetic.main.activity_live_data.*
+import kotlin.concurrent.thread
 
 
 class LiveDataActivity : AppCompatActivity() {
@@ -42,5 +43,14 @@ class LiveDataActivity : AppCompatActivity() {
         LiveDataBus.observe("msg", this, Observer<String> {
             msgTv3.text = it
         })
+
+        thread {
+            LiveDataBus.postValue("msg1", "Hello World")
+        }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
